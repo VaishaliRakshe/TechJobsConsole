@@ -44,8 +44,22 @@ namespace TechJobsConsole
             LoadData();
 
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
-
-            foreach (Dictionary<string, string> row in AllJobs)
+            if (column == "all")
+            {
+                foreach (Dictionary<string, string> row in AllJobs)
+                {
+                    foreach (KeyValuePair<string, string> itemline in row)
+                    {
+                        if (itemline.Value.ToLower().Contains(value.ToLower()))
+                        {
+                            string aValue = row[column];
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Dictionary<string, string> row in AllJobs)
             {
                 string aValue = row[column];
 
@@ -54,7 +68,7 @@ namespace TechJobsConsole
                     jobs.Add(row);
                 }
             }
-
+        }
             return jobs;
         }
 
